@@ -16,7 +16,7 @@ const
   qAuth = process.env.QUEUE_DB_USER ? `${ process.env.QUEUE_DB_USER }:${ process.env.QUEUE_DB_PASS || '' }@` : '',
 
   dbClient = new mongoDB.MongoClient(
-    `mongodb://${ qAuth }${ process.env.QUEUE_DB_HOST || 'localhost' }:${ process.env.QUEUE_DB_PORT || '27017' }/`,
+    process.env.QUEUE_DB_SRVCONN ? process.env.QUEUE_DB_SRVCONN : `mongodb://${ qAuth }${ process.env.QUEUE_DB_HOST || 'localhost' }:${ process.env.QUEUE_DB_PORT || '27017' }/`,
     { useNewUrlParser: true, useUnifiedTopology: true }
   );
 
